@@ -1,0 +1,1735 @@
+<html class=""><head>
+    
+    
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+      window.FontAwesomeConfig = {
+          autoReplaceSvg: 'nest', // Options: 'nest', 'remove', 'replace'
+      };
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    
+<style>
+  * {
+    font-family: "Inter", sans-serif;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+    
+<style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+</style>
+
+    
+<style>
+   :root {
+          /* Base colors */
+          --color-base: #ffffff;
+          --color-base-50: #f9fafb;
+          --color-base-100: #f3f4f6;
+          --color-base-200: #e5e7eb;
+          --color-base-300: #d1d5db;
+          --color-base-400: #9ca3af;
+          --color-base-500: #6b7280;
+          --color-base-600: #4b5563;  
+          --color-base-700: #374151;
+          --color-base-800: #1f2937;  
+          --color-base-900: #111827;
+          --color-base-content: #1f2937;
+
+          /* Primary colors */
+          --color-primary: #3b82f6;
+          --color-primary-50: #eff6ff;
+          --color-primary-100: #dbeafe;
+          --color-primary-200: #bfdbfe;
+          --color-primary-300: #93c5fd;
+          --color-primary-400: #60a5fa;
+          --color-primary-500: #3b82f6;
+          --color-primary-600: #2563eb;
+          --color-primary-700: #1d4ed8;
+          --color-primary-800: #1e40af;
+          --color-primary-900: #1e3a8a;
+          --color-primary-focus: #2563eb;
+          --color-primary-content: #ffffff;
+
+          /* Secondary colors */
+          --color-secondary: #8b5cf6;
+          --color-secondary-50: #f5f3ff;
+          --color-secondary-100: #ede9fe;
+          --color-secondary-200: #ddd6fe;
+          --color-secondary-300: #c4b5fd;
+          --color-secondary-400: #a78bfa;
+          --color-secondary-500: #8b5cf6;
+          --color-secondary-600: #7c3aed;
+          --color-secondary-700: #6d28d9;
+          --color-secondary-800: #5b21b6;
+          --color-secondary-900: #4c1d95;
+          --color-secondary-focus: #7c3aed;
+          --color-secondary-content: #ffffff;
+
+          /* Accent colors */
+          --color-accent: #f472b6;
+          --color-accent-50: #fdf2f8;
+          --color-accent-100: #fce7f3;
+          --color-accent-200: #fbcfe8;
+          --color-accent-300: #f9a8d4;
+          --color-accent-400: #f472b6;
+          --color-accent-500: #ec4899;
+          --color-accent-600: #db2777;
+          --color-accent-700: #be185d;
+          --color-accent-800: #9d174d;
+          --color-accent-900: #831843;
+          --color-accent-focus: #db2777;
+          --color-accent-content: #ffffff;
+
+          /* Neutral colors */
+          --color-neutral: #6b7280;
+          --color-neutral-50: #f9fafb;
+          --color-neutral-100: #f3f4f6;
+          --color-neutral-200: #e5e7eb;
+          --color-neutral-300: #d1d5db;
+          --color-neutral-400: #9ca3af;
+          --color-neutral-500: #6b7280;
+          --color-neutral-600: #4b5563;
+          --color-neutral-700: #374151;
+          --color-neutral-800: #1f2937;
+          --color-neutral-900: #111827;
+          --color-neutral-focus: #4b5563;
+          --color-neutral-content: #ffffff;
+
+          /* Info colors */
+          --color-info: #3b82f6;
+          --color-info-50: #eff6ff;
+          --color-info-100: #dbeafe;
+          --color-info-200: #bfdbfe;
+          --color-info-300: #93c5fd;
+          --color-info-400: #60a5fa;
+          --color-info-500: #3b82f6;
+          --color-info-600: #2563eb;
+          --color-info-700: #1d4ed8;
+          --color-info-800: #1e40af;
+          --color-info-900: #1e3a8a;
+          --color-info-focus: #2563eb;
+          --color-info-content: #ffffff;
+
+          /* Success colors */
+          --color-success: #10b981;
+          --color-success-50: #ecfdf5;
+          --color-success-100: #d1fae5;
+          --color-success-200: #a7f3d0;
+          --color-success-300: #6ee7b7;
+          --color-success-400: #34d399;
+          --color-success-500: #10b981;
+          --color-success-600: #059669;
+          --color-success-700: #047857;
+          --color-success-800: #065f46;
+          --color-success-900: #064e3b;
+          --color-success-focus: #059669;
+          --color-success-content: #ffffff;
+
+          /* Warning colors */
+          --color-warning: #f59e0b;
+          --color-warning-50: #fffbeb;
+          --color-warning-100: #fef3c7;
+          --color-warning-200: #fde68a;
+          --color-warning-300: #fcd34d;
+          --color-warning-400: #fbbf24;
+          --color-warning-500: #f59e0b;
+          --color-warning-600: #d97706;
+          --color-warning-700: #b45309;
+          --color-warning-800: #92400e;
+          --color-warning-900: #78350f;
+          --color-warning-focus: #d97706;
+          --color-warning-content: #ffffff;
+
+          /* Error colors */
+          --color-error: #ef4444;
+          --color-error-50: #fef2f2;
+          --color-error-100: #fee2e2;
+          --color-error-200: #fecaca;
+          --color-error-300: #fca5a5;
+          --color-error-400: #f87171;
+          --color-error-500: #ef4444;
+          --color-error-600: #dc2626;
+          --color-error-700: #b91c1c;
+          --color-error-800: #991b1b;
+          --color-error-900: #7f1d1d;
+          --color-error-focus: #dc2626;
+          --color-error-content: #ffffff;
+        }
+</style>
+
+    
+<style>
+/* Dark theme */
+        .dark {
+          /* Base colors */
+          --color-base: #1f2937;
+          --color-base-50: #111827;
+          --color-base-100: #1f2937;
+          --color-base-200: #374151;
+          --color-base-300: #4b5563;
+          --color-base-400: #6b7280;
+          --color-base-500: #9ca3af;
+          --color-base-600: #d1d5db;
+          --color-base-700: #e5e7eb;
+          --color-base-800: #f3f4f6;
+          --color-base-900: #f9fafb;
+          --color-base-content: #f9fafb;
+
+          /* Primary colors */
+          --color-primary: #60a5fa;
+          --color-primary-50: #1e3a8a;
+          --color-primary-100: #1e40af;
+          --color-primary-200: #1d4ed8;
+          --color-primary-300: #2563eb;
+          --color-primary-400: #3b82f6;
+          --color-primary-500: #60a5fa;
+          --color-primary-600: #93c5fd;
+          --color-primary-700: #bfdbfe;
+          --color-primary-800: #dbeafe;
+          --color-primary-900: #eff6ff;
+          --color-primary-focus: #3b82f6;
+          --color-primary-content: #1f2937;
+
+          /* Secondary colors */
+          --color-secondary: #a78bfa;
+          --color-secondary-50: #4c1d95;
+          --color-secondary-100: #5b21b6;
+          --color-secondary-200: #6d28d9;
+          --color-secondary-300: #7c3aed;
+          --color-secondary-400: #8b5cf6;
+          --color-secondary-500: #a78bfa;
+          --color-secondary-600: #c4b5fd;
+          --color-secondary-700: #ddd6fe;
+          --color-secondary-800: #ede9fe;
+          --color-secondary-900: #f5f3ff;
+          --color-secondary-focus: #8b5cf6;
+          --color-secondary-content: #1f2937;
+
+          /* Accent colors */
+          --color-accent: #f472b6;
+          --color-accent-50: #831843;
+          --color-accent-100: #9d174d;
+          --color-accent-200: #be185d;
+          --color-accent-300: #db2777;
+          --color-accent-400: #ec4899;
+          --color-accent-500: #f472b6;
+          --color-accent-600: #f9a8d4;
+          --color-accent-700: #fbcfe8;
+          --color-accent-800: #fce7f3;
+          --color-accent-900: #fdf2f8;
+          --color-accent-focus: #ec4899;
+          --color-accent-content: #1f2937;
+
+          /* Neutral colors remain the same as light theme */
+
+          /* Info colors */
+          --color-info: #60a5fa;
+          --color-info-50: #1e3a8a;
+          --color-info-100: #1e40af;
+          --color-info-200: #1d4ed8;
+          --color-info-300: #2563eb;
+          --color-info-400: #3b82f6;
+          --color-info-500: #60a5fa;
+          --color-info-600: #93c5fd;
+          --color-info-700: #bfdbfe;
+          --color-info-800: #dbeafe;
+          --color-info-900: #eff6ff;
+          --color-info-focus: #3b82f6;
+          --color-info-content: #1f2937;
+
+          /* Success colors */
+          --color-success: #34d399;
+          --color-success-50: #064e3b;
+          --color-success-100: #065f46;
+          --color-success-200: #047857;
+          --color-success-300: #059669;
+          --color-success-400: #10b981;
+          --color-success-500: #34d399;
+          --color-success-600: #6ee7b7;
+          --color-success-700: #a7f3d0;
+          --color-success-800: #d1fae5;
+          --color-success-900: #ecfdf5;
+          --color-success-focus: #10b981;
+          --color-success-content: #1f2937;
+
+          /* Warning colors */
+          --color-warning: #fbbf24;
+          --color-warning-50: #78350f;
+          --color-warning-100: #92400e;
+          --color-warning-200: #b45309;
+          --color-warning-300: #d97706;
+          --color-warning-400: #f59e0b;
+          --color-warning-500: #fbbf24;
+          --color-warning-600: #fcd34d;
+          --color-warning-700: #fde68a;
+          --color-warning-800: #fef3c7;
+          --color-warning-900: #fffbeb;
+          --color-warning-focus: #f59e0b;
+          --color-warning-content: #1f2937;
+
+          /* Error colors */
+          --color-error: #f87171;
+          --color-error-50: #7f1d1d;
+          --color-error-100: #991b1b;
+          --color-error-200: #b91c1c;
+          --color-error-300: #dc2626;
+          --color-error-400: #ef4444;
+          --color-error-500: #f87171;
+          --color-error-600: #fca5a5;
+          --color-error-700: #fecaca;
+          --color-error-800: #fee2e2;
+          --color-error-900: #fef2f2;
+          --color-error-focus: #ef4444;
+          --color-error-content: #1f2937;
+        }
+</style>
+
+    
+  <script>tailwind.config = {
+  "theme": {
+    "extend": {
+      "colors": {
+        "transparent": "transparent",
+        "current": "currentColor",
+        "black": "#000000",
+        "white": "#ffffff",
+        "gray": {
+          "50": "#f9fafb",
+          "100": "#f3f4f6",
+          "200": "#e5e7eb",
+          "300": "#d1d5db",
+          "400": "#9ca3af",
+          "500": "#6b7280",
+          "600": "#4b5563",
+          "700": "#374151",
+          "800": "#1f2937",
+          "900": "#111827"
+        },
+        "red": {
+          "50": "#fef2f2",
+          "100": "#fee2e2",
+          "200": "#fecaca",
+          "300": "#fca5a5",
+          "400": "#f87171",
+          "500": "#ef4444",
+          "600": "#dc2626",
+          "700": "#b91c1c",
+          "800": "#991b1b",
+          "900": "#7f1d1d"
+        },
+        "yellow": {
+          "50": "#fffbeb",
+          "100": "#fef3c7",
+          "200": "#fde68a",
+          "300": "#fcd34d",
+          "400": "#fbbf24",
+          "500": "#f59e0b",
+          "600": "#d97706",
+          "700": "#b45309",
+          "800": "#92400e",
+          "900": "#78350f"
+        },
+        "green": {
+          "50": "#ecfdf5",
+          "100": "#d1fae5",
+          "200": "#a7f3d0",
+          "300": "#6ee7b7",
+          "400": "#34d399",
+          "500": "#10b981",
+          "600": "#059669",
+          "700": "#047857",
+          "800": "#065f46",
+          "900": "#064e3b"
+        },
+        "blue": {
+          "50": "#eff6ff",
+          "100": "#dbeafe",
+          "200": "#bfdbfe",
+          "300": "#93c5fd",
+          "400": "#60a5fa",
+          "500": "#3b82f6",
+          "600": "#2563eb",
+          "700": "#1d4ed8",
+          "800": "#1e40af",
+          "900": "#1e3a8a"
+        },
+        "indigo": {
+          "50": "#eef2ff",
+          "100": "#e0e7ff",
+          "200": "#c7d2fe",
+          "300": "#a5b4fc",
+          "400": "#818cf8",
+          "500": "#6366f1",
+          "600": "#4f46e5",
+          "700": "#4338ca",
+          "800": "#3730a3",
+          "900": "#312e81"
+        },
+        "purple": {
+          "50": "#f5f3ff",
+          "100": "#ede9fe",
+          "200": "#ddd6fe",
+          "300": "#c4b5fd",
+          "400": "#a78bfa",
+          "500": "#8b5cf6",
+          "600": "#7c3aed",
+          "700": "#6d28d9",
+          "800": "#5b21b6",
+          "900": "#4c1d95"
+        },
+        "pink": {
+          "50": "#fdf2f8",
+          "100": "#fce7f3",
+          "200": "#fbcfe8",
+          "300": "#f9a8d4",
+          "400": "#f472b6",
+          "500": "#ec4899",
+          "600": "#db2777",
+          "700": "#be185d",
+          "800": "#9d174d",
+          "900": "#831843"
+        },
+        "primary": {
+          "50": "var(--color-primary-50)",
+          "100": "var(--color-primary-100)",
+          "200": "var(--color-primary-200)",
+          "300": "var(--color-primary-300)",
+          "400": "var(--color-primary-400)",
+          "500": "var(--color-primary-500)",
+          "600": "var(--color-primary-600)",
+          "700": "var(--color-primary-700)",
+          "800": "var(--color-primary-800)",
+          "900": "var(--color-primary-900)",
+          "DEFAULT": "var(--color-primary)",
+          "focus": "var(--color-primary-focus)",
+          "content": "var(--color-primary-content)"
+        },
+        "secondary": {
+          "50": "var(--color-secondary-50)",
+          "100": "var(--color-secondary-100)",
+          "200": "var(--color-secondary-200)",
+          "300": "var(--color-secondary-300)",
+          "400": "var(--color-secondary-400)",
+          "500": "var(--color-secondary-500)",
+          "600": "var(--color-secondary-600)",
+          "700": "var(--color-secondary-700)",
+          "800": "var(--color-secondary-800)",
+          "900": "var(--color-secondary-900)",
+          "DEFAULT": "var(--color-secondary)",
+          "focus": "var(--color-secondary-focus)",
+          "content": "var(--color-secondary-content)"
+        },
+        "accent": {
+          "50": "var(--color-accent-50)",
+          "100": "var(--color-accent-100)",
+          "200": "var(--color-accent-200)",
+          "300": "var(--color-accent-300)",
+          "400": "var(--color-accent-400)",
+          "500": "var(--color-accent-500)",
+          "600": "var(--color-accent-600)",
+          "700": "var(--color-accent-700)",
+          "800": "var(--color-accent-800)",
+          "900": "var(--color-accent-900)",
+          "DEFAULT": "var(--color-accent)",
+          "focus": "var(--color-accent-focus)",
+          "content": "var(--color-accent-content)"
+        },
+        "neutral": {
+          "50": "var(--color-neutral-50)",
+          "100": "var(--color-neutral-100)",
+          "200": "var(--color-neutral-200)",
+          "300": "var(--color-neutral-300)",
+          "400": "var(--color-neutral-400)",
+          "500": "var(--color-neutral-500)",
+          "600": "var(--color-neutral-600)",
+          "700": "var(--color-neutral-700)",
+          "800": "var(--color-neutral-800)",
+          "900": "var(--color-neutral-900)",
+          "DEFAULT": "var(--color-neutral)",
+          "focus": "var(--color-neutral-focus)",
+          "content": "var(--color-neutral-content)"
+        },
+        "info": {
+          "50": "var(--color-info-50)",
+          "100": "var(--color-info-100)",
+          "200": "var(--color-info-200)",
+          "300": "var(--color-info-300)",
+          "400": "var(--color-info-400)",
+          "500": "var(--color-info-500)",
+          "600": "var(--color-info-600)",
+          "700": "var(--color-info-700)",
+          "800": "var(--color-info-800)",
+          "900": "var(--color-info-900)",
+          "DEFAULT": "var(--color-info)",
+          "focus": "var(--color-info-focus)",
+          "content": "var(--color-info-content)"
+        },
+        "success": {
+          "50": "var(--color-success-50)",
+          "100": "var(--color-success-100)",
+          "200": "var(--color-success-200)",
+          "300": "var(--color-success-300)",
+          "400": "var(--color-success-400)",
+          "500": "var(--color-success-500)",
+          "600": "var(--color-success-600)",
+          "700": "var(--color-success-700)",
+          "800": "var(--color-success-800)",
+          "900": "var(--color-success-900)",
+          "DEFAULT": "var(--color-success)",
+          "focus": "var(--color-success-focus)",
+          "content": "var(--color-success-content)"
+        },
+        "warning": {
+          "50": "var(--color-warning-50)",
+          "100": "var(--color-warning-100)",
+          "200": "var(--color-warning-200)",
+          "300": "var(--color-warning-300)",
+          "400": "var(--color-warning-400)",
+          "500": "var(--color-warning-500)",
+          "600": "var(--color-warning-600)",
+          "700": "var(--color-warning-700)",
+          "800": "var(--color-warning-800)",
+          "900": "var(--color-warning-900)",
+          "DEFAULT": "var(--color-warning)",
+          "focus": "var(--color-warning-focus)",
+          "content": "var(--color-warning-content)"
+        },
+        "error": {
+          "50": "var(--color-error-50)",
+          "100": "var(--color-error-100)",
+          "200": "var(--color-error-200)",
+          "300": "var(--color-error-300)",
+          "400": "var(--color-error-400)",
+          "500": "var(--color-error-500)",
+          "600": "var(--color-error-600)",
+          "700": "var(--color-error-700)",
+          "800": "var(--color-error-800)",
+          "900": "var(--color-error-900)",
+          "DEFAULT": "var(--color-error)",
+          "focus": "var(--color-error-focus)",
+          "content": "var(--color-error-content)"
+        },
+        "danger": {
+          "50": "var(--color-error-50)",
+          "100": "var(--color-error-100)",
+          "200": "var(--color-error-200)",
+          "300": "var(--color-error-300)",
+          "400": "var(--color-error-400)",
+          "500": "var(--color-error-500)",
+          "600": "var(--color-error-600)",
+          "700": "var(--color-error-700)",
+          "800": "var(--color-error-800)",
+          "900": "var(--color-error-900)",
+          "DEFAULT": "var(--color-error)",
+          "focus": "var(--color-error-focus)",
+          "content": "var(--color-error-content)"
+        },
+        "failure": {
+          "50": "var(--color-error-50)",
+          "100": "var(--color-error-100)",
+          "200": "var(--color-error-200)",
+          "300": "var(--color-error-300)",
+          "400": "var(--color-error-400)",
+          "500": "var(--color-error-500)",
+          "600": "var(--color-error-600)",
+          "700": "var(--color-error-700)",
+          "800": "var(--color-error-800)",
+          "900": "var(--color-error-900)",
+          "DEFAULT": "var(--color-error)",
+          "focus": "var(--color-error-focus)",
+          "content": "var(--color-error-content)"
+        }
+      },
+      "fontFamily": {
+        "sans": [
+          "Inter",
+          "sans-serif"
+        ]
+      }
+    }
+  },
+  "variants": {
+    "extend": {
+      "backgroundColor": [
+        "active",
+        "group-hover"
+      ],
+      "textColor": [
+        "active",
+        "group-hover"
+      ]
+    }
+  },
+  "plugins": []
+};</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;500;600;700;800;900&amp;display=swap"><style>
+      body {
+        font-family: 'Inter', sans-serif !important;
+      }
+      
+      /* Preserve Font Awesome icons */
+      .fa, .fas, .far, .fal, .fab {
+        font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+      }
+    </style><style>
+  .highlighted-section {
+    outline: 2px solid #3F20FB;
+    background-color: rgba(63, 32, 251, 0.1);
+  }
+
+  .edit-button {
+    position: absolute;
+    z-index: 1000;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  html, body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  </style></head>
+
+              <body class="h-full text-base-content">
+                <nav id="header" class="fixed top-0 left-0 w-full bg-opacity-80 backdrop-filter backdrop-blur-md bg-[#161616] text-white z-50 px-6 py-4 transition-all duration-300">
+  <div class="container mx-auto flex justify-between items-center">
+    <div id="logo" class="text-3xl font-bold bg-gradient-to-r from-[#5C45FD] to-[#8C84FF] text-transparent bg-clip-text">
+      WEBAGENCY
+    </div>
+    <div class="hidden md:flex space-x-8">
+      <span class="text-white hover:text-[#8C84FF] transition duration-300 cursor-pointer">Serviços</span>
+      <span class="text-white hover:text-[#8C84FF] transition duration-300 cursor-pointer">Portfólio</span>
+      <span class="text-white hover:text-[#8C84FF] transition duration-300 cursor-pointer">Sobre</span>
+      <span class="text-white hover:text-[#8C84FF] transition duration-300 cursor-pointer">Depoimentos</span>
+      <span class="text-white hover:text-[#8C84FF] transition duration-300 cursor-pointer">FAQ</span>
+      <span class="text-white hover:text-[#8C84FF] transition duration-300 cursor-pointer">Contato</span>
+    </div>
+    <div class="hidden md:flex space-x-4">
+      <span class="text-white hover:text-[#5C45FD] transition-all transform hover:scale-110 duration-300 cursor-pointer">
+        <i class="fa-brands fa-instagram text-xl"></i>
+      </span>
+      <span class="text-white hover:text-[#5C45FD] transition-all transform hover:scale-110 duration-300 cursor-pointer">
+        <i class="fa-brands fa-linkedin text-xl"></i>
+      </span>
+      <span class="text-white hover:text-[#5C45FD] transition-all transform hover:scale-110 duration-300 cursor-pointer">
+        <i class="fa-brands fa-github text-xl"></i>
+      </span>
+    </div>
+    <div class="md:hidden">
+      <button id="mobile-menu-button" class="text-white focus:outline-none">
+        <i class="fa-solid fa-bars text-2xl"></i>
+      </button>
+    </div>
+  </div>
+  
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-[#161616] bg-opacity-95 absolute top-full left-0 w-full py-4 px-6">
+    <div class="flex flex-col space-y-4">
+      <span class="text-white hover:text-[#8C84FF] transition duration-300 cursor-pointer">Serviços</span>
+      <span class="text-white hover:text-[#8C84FF] transition duration-300 cursor-pointer">Portfólio</span>
+      <span class="text-white hover:text-[#8C84FF] transition duration-300 cursor-pointer">Sobre</span>
+      <span class="text-white hover:text-[#8C84FF] transition duration-300 cursor-pointer">Depoimentos</span>
+      <span class="text-white hover:text-[#8C84FF] transition duration-300 cursor-pointer">FAQ</span>
+      <span class="text-white hover:text-[#8C84FF] transition duration-300 cursor-pointer">Contato</span>
+      <div class="flex space-x-4 pt-2">
+        <span class="text-white hover:text-[#5C45FD] transition duration-300 cursor-pointer">
+          <i class="fa-brands fa-instagram text-xl"></i>
+        </span>
+        <span class="text-white hover:text-[#5C45FD] transition duration-300 cursor-pointer">
+          <i class="fa-brands fa-linkedin text-xl"></i>
+        </span>
+        <span class="text-white hover:text-[#5C45FD] transition duration-300 cursor-pointer">
+          <i class="fa-brands fa-github text-xl"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="hero" class="relative h-[800px] w-full bg-[#161616] flex items-center justify-center overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-br from-[#161616] via-[#1f1b36] to-[#161616] opacity-80"></div>
+  <div class="absolute top-0 left-0 w-full h-full">
+    <img class="w-full h-full object-cover opacity-30" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/2d1002e375-7a1a21b756e16be0f58a.png" alt="abstract digital web development concept with glowing purple and blue network lines, code elements, and futuristic UI interfaces in dark theme">
+  </div>
+  <div class="absolute inset-0 bg-[#161616] opacity-20"></div>
+  <div class="container mx-auto text-center text-white z-10 px-4">
+    <h1 class="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#5C45FD] to-[#8C84FF] inline-block text-transparent bg-clip-text">
+      Transformamos ideias em experiências digitais reais
+    </h1>
+    <p class="text-lg md:text-xl text-[#969799] max-w-3xl mx-auto mb-8">
+      Somos especialistas em criar soluções web sob medida que combinam design moderno, tecnologia de ponta e estratégia de negócio para gerar resultados reais.
+    </p>
+    <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-6">
+      <span class="px-8 py-4 bg-[#5C45FD] hover:bg-[#4935e0] text-white rounded-md transition duration-300 transform hover:scale-105 shadow-lg shadow-[#5C45FD]/20 w-full md:w-auto cursor-pointer">
+        Solicitar orçamento gratuito
+      </span>
+      <span class="px-8 py-4 border border-[#5C45FD] text-white rounded-md transition duration-300 hover:bg-[#5C45FD]/10 w-full md:w-auto cursor-pointer">
+        Conheça nossos serviços
+      </span>
+    </div>
+  </div>
+  
+  <div class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-[#161616] to-transparent"></div>
+</section>
+
+<!-- Tech Stack Section -->
+<section id="tech-stack" class="py-16 bg-[#161616] text-white">
+  <div class="container mx-auto px-4">
+    <h2 class="text-2xl font-medium text-center mb-4 text-[#969799]">TECNOLOGIAS DOS GRANDES</h2>
+    <p class="text-center text-[#969799] max-w-2xl mx-auto mb-12">
+      Utilizamos as mesmas tecnologias que impulsionam as maiores empresas do mundo
+    </p>
+    
+    <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+      <div class="tech-logo grayscale hover:grayscale-0 hover:scale-110 transition duration-300">
+        <i class="fa-brands fa-react text-4xl md:text-5xl text-[#61DAFB]"></i>
+      </div>
+      <div class="tech-logo grayscale hover:grayscale-0 hover:scale-110 transition duration-300">
+        <i class="fa-brands fa-vuejs text-4xl md:text-5xl text-[#41B883]"></i>
+      </div>
+      <div class="tech-logo grayscale hover:grayscale-0 hover:scale-110 transition duration-300">
+        <i class="fa-brands fa-angular text-4xl md:text-5xl text-[#DD0031]"></i>
+      </div>
+      <div class="tech-logo grayscale hover:grayscale-0 hover:scale-110 transition duration-300">
+        <i class="fa-brands fa-node-js text-4xl md:text-5xl text-[#68A063]"></i>
+      </div>
+      <div class="tech-logo grayscale hover:grayscale-0 hover:scale-110 transition duration-300">
+        <i class="fa-brands fa-js text-4xl md:text-5xl text-[#F7DF1E]"></i>
+      </div>
+      <div class="tech-logo grayscale hover:grayscale-0 hover:scale-110 transition duration-300">
+        <i class="fa-brands fa-wordpress text-4xl md:text-5xl text-[#21759B]"></i>
+      </div>
+      <div class="tech-logo grayscale hover:grayscale-0 hover:scale-110 transition duration-300">
+        <i class="fa-brands fa-php text-4xl md:text-5xl text-[#777BB4]"></i>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="py-20 bg-[#161616]">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Nossos Serviços</h2>
+      <p class="text-[#969799] max-w-2xl mx-auto">
+        Soluções completas para sua presença digital, desde o planejamento até a implementação e otimização
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Service 1 -->
+      <div id="service-1" class="bg-[#2A2A2A] rounded-lg p-8 transition-all duration-300 hover:transform hover:translate-y-[-10px] hover:shadow-lg hover:shadow-[#5C45FD]/20 group">
+        <div class="w-16 h-16 rounded-full bg-[#5C45FD]/20 flex items-center justify-center mb-6 group-hover:bg-[#5C45FD]/30 transition-all duration-300">
+          <i class="fa-solid fa-globe text-2xl text-[#8C84FF]"></i>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-4">Sites Institucionais</h3>
+        <p class="text-[#969799] mb-6">
+          Criamos sites profissionais e responsivos que representam sua marca com autoridade e captam a atenção dos visitantes.
+        </p>
+        <span class="text-[#8C84FF] flex items-center font-medium group-hover:text-[#5C45FD] transition-all duration-300 cursor-pointer">
+          Saiba mais
+          <i class="fa-solid fa-arrow-right ml-2 transition-all duration-300 group-hover:translate-x-1"></i>
+        </span>
+      </div>
+      
+      <!-- Service 2 -->
+      <div id="service-2" class="bg-[#2A2A2A] rounded-lg p-8 transition-all duration-300 hover:transform hover:translate-y-[-10px] hover:shadow-lg hover:shadow-[#5C45FD]/20 group">
+        <div class="w-16 h-16 rounded-full bg-[#5C45FD]/20 flex items-center justify-center mb-6 group-hover:bg-[#5C45FD]/30 transition-all duration-300">
+          <i class="fa-solid fa-rocket text-2xl text-[#8C84FF]"></i>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-4">Landing Pages</h3>
+        <p class="text-[#969799] mb-6">
+          Páginas de alta conversão focadas em transformar visitantes em leads e clientes através de design persuasivo.
+        </p>
+        <span class="text-[#8C84FF] flex items-center font-medium group-hover:text-[#5C45FD] transition-all duration-300 cursor-pointer">
+          Saiba mais
+          <i class="fa-solid fa-arrow-right ml-2 transition-all duration-300 group-hover:translate-x-1"></i>
+        </span>
+      </div>
+      
+      <!-- Service 3 -->
+      <div id="service-3" class="bg-[#2A2A2A] rounded-lg p-8 transition-all duration-300 hover:transform hover:translate-y-[-10px] hover:shadow-lg hover:shadow-[#5C45FD]/20 group">
+        <div class="w-16 h-16 rounded-full bg-[#5C45FD]/20 flex items-center justify-center mb-6 group-hover:bg-[#5C45FD]/30 transition-all duration-300">
+          <i class="fa-solid fa-code text-2xl text-[#8C84FF]"></i>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-4">Sistemas Web</h3>
+        <p class="text-[#969799] mb-6">
+          Desenvolvemos sistemas personalizados que automatizam processos e aumentam a eficiência do seu negócio.
+        </p>
+        <span class="text-[#8C84FF] flex items-center font-medium group-hover:text-[#5C45FD] transition-all duration-300 cursor-pointer">
+          Saiba mais
+          <i class="fa-solid fa-arrow-right ml-2 transition-all duration-300 group-hover:translate-x-1"></i>
+        </span>
+      </div>
+      
+      <!-- Service 4 -->
+      <div id="service-4" class="bg-[#2A2A2A] rounded-lg p-8 transition-all duration-300 hover:transform hover:translate-y-[-10px] hover:shadow-lg hover:shadow-[#5C45FD]/20 group">
+        <div class="w-16 h-16 rounded-full bg-[#5C45FD]/20 flex items-center justify-center mb-6 group-hover:bg-[#5C45FD]/30 transition-all duration-300">
+          <i class="fa-solid fa-wrench text-2xl text-[#8C84FF]"></i>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-4">Correção de Sites</h3>
+        <p class="text-[#969799] mb-6">
+          Identificamos e corrigimos problemas técnicos, melhorando a performance e a experiência do usuário em sites existentes.
+        </p>
+        <span class="text-[#8C84FF] flex items-center font-medium group-hover:text-[#5C45FD] transition-all duration-300 cursor-pointer">
+          Saiba mais
+          <i class="fa-solid fa-arrow-right ml-2 transition-all duration-300 group-hover:translate-x-1"></i>
+        </span>
+      </div>
+      
+      <!-- Service 5 -->
+      <div id="service-5" class="bg-[#2A2A2A] rounded-lg p-8 transition-all duration-300 hover:transform hover:translate-y-[-10px] hover:shadow-lg hover:shadow-[#5C45FD]/20 group">
+        <div class="w-16 h-16 rounded-full bg-[#5C45FD]/20 flex items-center justify-center mb-6 group-hover:bg-[#5C45FD]/30 transition-all duration-300">
+          <i class="fa-solid fa-palette text-2xl text-[#8C84FF]"></i>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-4">Design e Identidade Visual</h3>
+        <p class="text-[#969799] mb-6">
+          Criamos a identidade visual da sua marca com designs modernos e alinhados com o seu posicionamento no mercado.
+        </p>
+        <span class="text-[#8C84FF] flex items-center font-medium group-hover:text-[#5C45FD] transition-all duration-300 cursor-pointer">
+          Saiba mais
+          <i class="fa-solid fa-arrow-right ml-2 transition-all duration-300 group-hover:translate-x-1"></i>
+        </span>
+      </div>
+      
+      <!-- Service 6 -->
+      <div id="service-6" class="bg-[#2A2A2A] rounded-lg p-8 transition-all duration-300 hover:transform hover:translate-y-[-10px] hover:shadow-lg hover:shadow-[#5C45FD]/20 group">
+        <div class="w-16 h-16 rounded-full bg-[#5C45FD]/20 flex items-center justify-center mb-6 group-hover:bg-[#5C45FD]/30 transition-all duration-300">
+          <i class="fa-solid fa-magnifying-glass-chart text-2xl text-[#8C84FF]"></i>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-4">Análise e Melhoria de SEO</h3>
+        <p class="text-[#969799] mb-6">
+          Otimizamos seu site para os motores de busca, melhorando o posicionamento e aumentando o tráfego orgânico.
+        </p>
+        <span class="text-[#8C84FF] flex items-center font-medium group-hover:text-[#5C45FD] transition-all duration-300 cursor-pointer">
+          Saiba mais
+          <i class="fa-solid fa-arrow-right ml-2 transition-all duration-300 group-hover:translate-x-1"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Before/After Section -->
+<section id="before-after" class="py-20 bg-gradient-to-b from-[#161616] to-[#1a1a24]">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Transformação Visual</h2>
+      <p class="text-[#969799] max-w-2xl mx-auto">
+        Veja como transformamos sites desatualizados em experiências digitais modernas e impactantes
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+      <!-- Before/After Example 1 -->
+      <div id="transformation-1" class="bg-[#2A2A2A] rounded-lg overflow-hidden">
+        <div class="flex flex-col md:flex-row">
+          <div class="w-full md:w-1/2 p-4 border-b md:border-b-0 md:border-r border-[#444]">
+            <div class="text-center mb-4">
+              <span class="text-sm font-medium text-[#969799]">ANTES</span>
+            </div>
+            <div class="h-64 overflow-hidden rounded-md">
+              <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/ca0e34c59e-fb9d338b414bb8c08773.png" alt="outdated website design with poor layout, cluttered interface, old-fashioned aesthetic in dark theme">
+            </div>
+          </div>
+          <div class="w-full md:w-1/2 p-4">
+            <div class="text-center mb-4">
+              <span class="text-sm font-medium text-[#5C45FD]">DEPOIS</span>
+            </div>
+            <div class="h-64 overflow-hidden rounded-md">
+              <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/963c0108b5-872dbf8f9f2ffb0c1181.png" alt="modern sleek website design with clean layout, purple and blue color scheme, professional dark theme interface">
+            </div>
+          </div>
+        </div>
+        <div class="p-6 bg-[#222]">
+          <h3 class="text-xl font-bold text-white mb-2">Site Institucional</h3>
+          <p class="text-[#969799]">
+            Transformamos um site desatualizado em uma plataforma moderna e responsiva, aumentando o tempo de permanência em 120%.
+          </p>
+        </div>
+      </div>
+      
+      <!-- Before/After Example 2 -->
+      <div id="transformation-2" class="bg-[#2A2A2A] rounded-lg overflow-hidden">
+        <div class="flex flex-col md:flex-row">
+          <div class="w-full md:w-1/2 p-4 border-b md:border-b-0 md:border-r border-[#444]">
+            <div class="text-center mb-4">
+              <span class="text-sm font-medium text-[#969799]">ANTES</span>
+            </div>
+            <div class="h-64 overflow-hidden rounded-md">
+              <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/703af7165a-0eebe8c200f39e8edfa1.png" alt="basic e-commerce website with poor product display, outdated design elements in dark theme">
+            </div>
+          </div>
+          <div class="w-full md:w-1/2 p-4">
+            <div class="text-center mb-4">
+              <span class="text-sm font-medium text-[#5C45FD]">DEPOIS</span>
+            </div>
+            <div class="h-64 overflow-hidden rounded-md">
+              <img class="w-full h-full object-cover" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/2210397c67-8626eb73b2d6ae3ad66c.png" alt="modern e-commerce platform with elegant product cards, purple and blue accents, sleek dark theme interface">
+            </div>
+          </div>
+        </div>
+        <div class="p-6 bg-[#222]">
+          <h3 class="text-xl font-bold text-white mb-2">E-commerce</h3>
+          <p class="text-[#969799]">
+            Redesenhamos a experiência de compra, resultando em um aumento de 85% na taxa de conversão e 45% no valor médio do pedido.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Statistics Section -->
+<section id="statistics" class="py-20 bg-[#1a1a24]">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Nossos Números</h2>
+      <p class="text-[#969799] max-w-2xl mx-auto">
+        Resultados que comprovam nossa experiência e compromisso com a excelência
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Stat 1 -->
+      <div id="stat-1" class="bg-gradient-to-br from-[#2A2A2A] to-[#252525] rounded-lg p-8 text-center">
+        <div class="text-[#5C45FD] mb-4">
+          <i class="fa-solid fa-users text-4xl"></i>
+        </div>
+        <div class="text-4xl font-bold text-white mb-2 counter" data-target="250">0</div>
+        <h3 class="text-[#969799] text-lg">Clientes Atendidos</h3>
+      </div>
+      
+      <!-- Stat 2 -->
+      <div id="stat-2" class="bg-gradient-to-br from-[#2A2A2A] to-[#252525] rounded-lg p-8 text-center">
+        <div class="text-[#5C45FD] mb-4">
+          <i class="fa-solid fa-laptop-code text-4xl"></i>
+        </div>
+        <div class="text-4xl font-bold text-white mb-2 counter" data-target="520">0</div>
+        <h3 class="text-[#969799] text-lg">Projetos Concluídos</h3>
+      </div>
+      
+      <!-- Stat 3 -->
+      <div id="stat-3" class="bg-gradient-to-br from-[#2A2A2A] to-[#252525] rounded-lg p-8 text-center">
+        <div class="text-[#5C45FD] mb-4">
+          <i class="fa-solid fa-medal text-4xl"></i>
+        </div>
+        <div class="text-4xl font-bold text-white mb-2 counter" data-target="15">0</div>
+        <h3 class="text-[#969799] text-lg">Anos de Experiência</h3>
+      </div>
+      
+      <!-- Stat 4 -->
+      <div id="stat-4" class="bg-gradient-to-br from-[#2A2A2A] to-[#252525] rounded-lg p-8 text-center">
+        <div class="text-[#5C45FD] mb-4">
+          <i class="fa-solid fa-earth-americas text-4xl"></i>
+        </div>
+        <div class="text-4xl font-bold text-white mb-2 counter" data-target="12">0</div>
+        <h3 class="text-[#969799] text-lg">Países Alcançados</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Portfolio Section -->
+<section id="portfolio" class="py-20 bg-gradient-to-b from-[#1a1a24] to-[#161616]">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Casos de Sucesso</h2>
+      <p class="text-[#969799] max-w-2xl mx-auto">
+        Conheça alguns dos projetos que desenvolvemos para empresas de diversos segmentos
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Portfolio Item 1 -->
+      <div id="portfolio-1" class="bg-[#2A2A2A] rounded-lg overflow-hidden group">
+        <div class="relative overflow-hidden">
+          <img class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/a253b2903d-bc3d7a6a7d54ed512b14.png" alt="modern corporate website with dark theme, purple and blue accents, professional layout">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#161616] to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300 flex items-end">
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-white mb-2">Site Corporativo</h3>
+              <p class="text-[#969799] mb-4">Empresa de tecnologia</p>
+              <span class="inline-flex items-center text-[#5C45FD] hover:text-[#8C84FF] transition duration-300 cursor-pointer">
+                Ver projeto
+                <i class="fa-solid fa-arrow-right ml-2"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Portfolio Item 2 -->
+      <div id="portfolio-2" class="bg-[#2A2A2A] rounded-lg overflow-hidden group">
+        <div class="relative overflow-hidden">
+          <img class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/3b898d1bf9-c0e51b32b009e5a70a20.png" alt="e-commerce website with elegant product display, dark theme with purple accents">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#161616] to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300 flex items-end">
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-white mb-2">E-commerce</h3>
+              <p class="text-[#969799] mb-4">Loja de moda</p>
+              <span class="inline-flex items-center text-[#5C45FD] hover:text-[#8C84FF] transition duration-300 cursor-pointer">
+                Ver projeto
+                <i class="fa-solid fa-arrow-right ml-2"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Portfolio Item 3 -->
+      <div id="portfolio-3" class="bg-[#2A2A2A] rounded-lg overflow-hidden group">
+        <div class="relative overflow-hidden">
+          <img class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/6156546d01-8b5bf9e2f68e30255b93.png" alt="landing page with call-to-action, dark theme, blue and purple gradient elements">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#161616] to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300 flex items-end">
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-white mb-2">Landing Page</h3>
+              <p class="text-[#969799] mb-4">Lançamento de produto</p>
+              <span class="inline-flex items-center text-[#5C45FD] hover:text-[#8C84FF] transition duration-300 cursor-pointer">
+                Ver projeto
+                <i class="fa-solid fa-arrow-right ml-2"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Portfolio Item 4 -->
+      <div id="portfolio-4" class="bg-[#2A2A2A] rounded-lg overflow-hidden group">
+        <div class="relative overflow-hidden">
+          <img class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/3481eb2477-ba9ccb5d663a488abd5a.png" alt="dashboard UI with data visualization, dark theme with purple accents">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#161616] to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300 flex items-end">
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-white mb-2">Dashboard</h3>
+              <p class="text-[#969799] mb-4">Sistema de gestão</p>
+              <span class="inline-flex items-center text-[#5C45FD] hover:text-[#8C84FF] transition duration-300 cursor-pointer">
+                Ver projeto
+                <i class="fa-solid fa-arrow-right ml-2"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Portfolio Item 5 -->
+      <div id="portfolio-5" class="bg-[#2A2A2A] rounded-lg overflow-hidden group">
+        <div class="relative overflow-hidden">
+          <img class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/25dc67c07b-ee808899292be5603bab.png" alt="blog website with modern layout, dark theme with blue accents">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#161616] to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300 flex items-end">
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-white mb-2">Blog</h3>
+              <p class="text-[#969799] mb-4">Portal de conteúdo</p>
+              <span class="inline-flex items-center text-[#5C45FD] hover:text-[#8C84FF] transition duration-300 cursor-pointer">
+                Ver projeto
+                <i class="fa-solid fa-arrow-right ml-2"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Portfolio Item 6 -->
+      <div id="portfolio-6" class="bg-[#2A2A2A] rounded-lg overflow-hidden group">
+        <div class="relative overflow-hidden">
+          <img class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/a5997b873a-489cc9fca972a786a271.png" alt="mobile app UI design with dark theme, purple gradients">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#161616] to-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300 flex items-end">
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-white mb-2">App Mobile</h3>
+              <p class="text-[#969799] mb-4">Aplicativo financeiro</p>
+              <span class="inline-flex items-center text-[#5C45FD] hover:text-[#8C84FF] transition duration-300 cursor-pointer">
+                Ver projeto
+                <i class="fa-solid fa-arrow-right ml-2"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="text-center mt-12">
+      <span class="inline-block px-8 py-4 bg-[#5C45FD] hover:bg-[#4935e0] text-white rounded-md transition duration-300 shadow-lg shadow-[#5C45FD]/20 cursor-pointer">
+        Quero um projeto como esses
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- Comparison Section -->
+<section id="comparison" class="py-20 bg-[#161616]">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Por que escolher uma agência especializada?</h2>
+      <p class="text-[#969799] max-w-2xl mx-auto">
+        Entenda as diferenças e vantagens de trabalhar com profissionais experientes
+      </p>
+    </div>
+    
+    <div class="overflow-x-auto">
+      <table class="w-full min-w-[768px] border-collapse">
+        <thead>
+          <tr>
+            <th class="p-4 text-left text-[#969799]">Características</th>
+            <th class="p-4 text-center bg-[#2A2A2A] rounded-tl-lg text-white">Freelancer</th>
+            <th class="p-4 text-center bg-[#5C45FD] text-white">Nossa Agência</th>
+            <th class="p-4 text-center bg-[#2A2A2A] rounded-tr-lg text-white">Você Mesmo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-[#2A2A2A]">
+            <td class="p-4 text-[#969799]">Equipe multidisciplinar</td>
+            <td class="p-4 text-center bg-[#2A2A2A] text-white">
+              <i class="fa-solid fa-xmark text-red-500"></i>
+            </td>
+            <td class="p-4 text-center bg-[#5C45FD]/10 text-white">
+              <i class="fa-solid fa-check text-[#5C45FD]"></i>
+            </td>
+            <td class="p-4 text-center bg-[#2A2A2A] text-white">
+              <i class="fa-solid fa-xmark text-red-500"></i>
+            </td>
+          </tr>
+          <tr class="border-b border-[#2A2A2A]">
+            <td class="p-4 text-[#969799]">Suporte contínuo</td>
+            <td class="p-4 text-center bg-[#2A2A2A] text-white">
+              <i class="fa-solid fa-xmark text-red-500"></i>
+            </td>
+            <td class="p-4 text-center bg-[#5C45FD]/10 text-white">
+              <i class="fa-solid fa-check text-[#5C45FD]"></i>
+            </td>
+            <td class="p-4 text-center bg-[#2A2A2A] text-white">
+              <i class="fa-solid fa-xmark text-red-500"></i>
+            </td>
+          </tr>
+          <tr class="border-b border-[#2A2A2A]">
+            <td class="p-4 text-[#969799]">Expertise em SEO</td>
+            <td class="p-4 text-center bg-[#2A2A2A] text-white">
+              <span class="text-yellow-500">Limitado</span>
+            </td>
+            <td class="p-4 text-center bg-[#5C45FD]/10 text-white">
+              <i class="fa-solid fa-check text-[#5C45FD]"></i>
+            </td>
+            <td class="p-4 text-center bg-[#2A2A2A] text-white">
+              <i class="fa-solid fa-xmark text-red-500"></i>
+            </td>
+          </tr>
+          <tr class="border-b border-[#2A2A2A]">
+            <td class="p-4 text-[#969799]">Garantia de qualidade</td>
+            <td class="p-4 text-center bg-[#2A2A2A] text-white">
+              <span class="text-yellow-500">Varia</span>
+            </td>
+            <td class="p-4 text-center bg-[#5C45FD]/10 text-white">
+              <i class="fa-solid fa-check text-[#5C45FD]"></i>
+            </td>
+            <td class="p-4 text-center bg-[#2A2A2A] text-white">
+              <i class="fa-solid fa-xmark text-red-500"></i>
+            </td>
+          </tr>
+          <tr class="border-b border-[#2A2A2A]">
+            <td class="p-4 text-[#969799]">Prazos definidos</td>
+            <td class="p-4 text-center bg-[#2A2A2A] text-white">
+              <span class="text-yellow-500">Varia</span>
+            </td>
+            <td class="p-4 text-center bg-[#5C45FD]/10 text-white">
+              <i class="fa-solid fa-check text-[#5C45FD]"></i>
+            </td>
+            <td class="p-4 text-center bg-[#2A2A2A] text-white">
+              <span class="text-yellow-500">Indefinido</span>
+            </td>
+          </tr>
+          <tr>
+            <td class="p-4 text-[#969799]">Custo-benefício</td>
+            <td class="p-4 text-center bg-[#2A2A2A] rounded-bl-lg text-white">
+              <span class="text-yellow-500">Médio</span>
+            </td>
+            <td class="p-4 text-center bg-[#5C45FD]/10 text-white">
+              <span class="text-[#5C45FD] font-bold">Excelente</span>
+            </td>
+            <td class="p-4 text-center bg-[#2A2A2A] rounded-br-lg text-white">
+              <span class="text-yellow-500">Baixo</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-20 bg-gradient-to-b from-[#161616] to-[#1a1a24]">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Sobre a Agência</h2>
+        <p class="text-[#969799] mb-6">
+          Somos especialistas em transformar ideias em experiências digitais impactantes. Atuamos como uma agência de desenvolvimento web completa, entregando soluções sob medida para empresas e profissionais que desejam conquistar presença digital com qualidade, performance e estratégia.
+        </p>
+        <p class="text-[#969799] mb-6">
+          Combinamos design moderno, tecnologia de ponta e visão de negócio para criar landing pages, sites institucionais, sistemas personalizados, e também para otimizar sites existentes — sempre com foco em conversão, usabilidade e posicionamento no Google.
+        </p>
+        <p class="text-[#969799] mb-8">
+          Nosso diferencial está em ouvir com profundidade, entender o seu público e propor soluções inteligentes que geram resultado real. Da primeira conversa até o lançamento, cada etapa do projeto é conduzida com organização, transparência e um alto padrão de entrega.
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-[#2A2A2A] p-6 rounded-lg">
+            <h3 class="text-xl font-bold text-white mb-2">Missão</h3>
+            <p class="text-[#969799]">
+              Transformar ideias em soluções digitais que geram resultados reais.
+            </p>
+          </div>
+          <div class="bg-[#2A2A2A] p-6 rounded-lg">
+            <h3 class="text-xl font-bold text-white mb-2">Visão</h3>
+            <p class="text-[#969799]">
+              Ser referência em desenvolvimento web com foco em resultados.
+            </p>
+          </div>
+          <div class="bg-[#2A2A2A] p-6 rounded-lg">
+            <h3 class="text-xl font-bold text-white mb-2">Valores</h3>
+            <p class="text-[#969799]">
+              Qualidade, inovação, transparência e compromisso.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="relative">
+        <div class="relative z-10 rounded-lg overflow-hidden shadow-2xl shadow-[#5C45FD]/20">
+          <img class="w-full h-auto" src="https://storage.googleapis.com/uxpilot-auth.appspot.com/c376b75015-5f97cd84f6acd16b0f66.png" alt="professional team of web developers and designers working in a modern office with purple and blue lighting accents, dark theme">
+        </div>
+        <div class="absolute top-8 -right-8 w-64 h-64 bg-gradient-to-br from-[#5C45FD] to-[#8C84FF] rounded-full filter blur-3xl opacity-20 -z-10"></div>
+        <div class="absolute -bottom-8 -left-8 w-64 h-64 bg-gradient-to-br from-[#5C45FD] to-[#8C84FF] rounded-full filter blur-3xl opacity-20 -z-10"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Guarantee Section -->
+<section id="guarantee" class="py-16 bg-[#1a1a24]">
+  <div class="container mx-auto px-4">
+    <div class="bg-gradient-to-r from-[#2A2A2A] to-[#252525] rounded-lg p-8 md:p-12">
+      <div class="flex flex-col md:flex-row items-center justify-between">
+        <div class="md:w-1/4 mb-6 md:mb-0 text-center">
+          <div class="w-24 h-24 mx-auto bg-[#5C45FD]/20 rounded-full flex items-center justify-center">
+            <i class="fa-solid fa-shield-check text-4xl text-[#5C45FD]"></i>
+          </div>
+        </div>
+        <div class="md:w-2/3">
+          <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">Garantia de Satisfação</h2>
+          <p class="text-[#969799] text-lg mb-6">
+            Revisamos seu projeto até sua aprovação total. Nosso compromisso é entregar exatamente o que você precisa, com a qualidade que seu negócio merece.
+          </p>
+          <span class="inline-block px-8 py-3 bg-[#5C45FD] hover:bg-[#4935e0] text-white rounded-md transition duration-300 shadow-lg shadow-[#5C45FD]/20 cursor-pointer">
+            Quero essa garantia
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section id="testimonials" class="py-20 bg-gradient-to-b from-[#1a1a24] to-[#161616]">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">O que nossos clientes dizem</h2>
+      <p class="text-[#969799] max-w-2xl mx-auto">
+        Depoimentos de quem já transformou sua presença digital com nossa agência
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Testimonial 1 -->
+      <div id="testimonial-1" class="bg-[#2A2A2A] rounded-lg p-8 relative">
+        <div class="absolute -top-4 -right-4 text-5xl text-[#5C45FD] opacity-20">
+          <i class="fa-solid fa-quote-right"></i>
+        </div>
+        <div class="flex items-center mb-6">
+          <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-2.jpg" alt="Client" class="w-16 h-16 rounded-full object-cover mr-4">
+          <div>
+            <h3 class="text-xl font-bold text-white">Ricardo Mendes</h3>
+            <p class="text-[#969799]">CEO, TechSolutions</p>
+          </div>
+        </div>
+        <p class="text-[#969799] mb-6">
+          "A equipe entendeu perfeitamente nossas necessidades e entregou um site que superou todas as expectativas. O aumento no tráfego e nas conversões foi imediato."
+        </p>
+        <div class="flex text-[#5C45FD]">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div>
+      </div>
+      
+      <!-- Testimonial 2 -->
+      <div id="testimonial-2" class="bg-[#2A2A2A] rounded-lg p-8 relative">
+        <div class="absolute -top-4 -right-4 text-5xl text-[#5C45FD] opacity-20">
+          <i class="fa-solid fa-quote-right"></i>
+        </div>
+        <div class="flex items-center mb-6">
+          <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-5.jpg" alt="Client" class="w-16 h-16 rounded-full object-cover mr-4">
+          <div>
+            <h3 class="text-xl font-bold text-white">Carla Oliveira</h3>
+            <p class="text-[#969799]">Diretora, Moda Express</p>
+          </div>
+        </div>
+        <p class="text-[#969799] mb-6">
+          "Nosso e-commerce estava desatualizado e perdendo vendas. Após o redesign, as vendas aumentaram em 75% e a experiência do cliente melhorou significativamente."
+        </p>
+        <div class="flex text-[#5C45FD]">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+        </div>
+      </div>
+      
+      <!-- Testimonial 3 -->
+      <div id="testimonial-3" class="bg-[#2A2A2A] rounded-lg p-8 relative">
+        <div class="absolute -top-4 -right-4 text-5xl text-[#5C45FD] opacity-20">
+          <i class="fa-solid fa-quote-right"></i>
+        </div>
+        <div class="flex items-center mb-6">
+          <img src="https://storage.googleapis.com/uxpilot-auth.appspot.com/avatars/avatar-3.jpg" alt="Client" class="w-16 h-16 rounded-full object-cover mr-4">
+          <div>
+            <h3 class="text-xl font-bold text-white">André Santos</h3>
+            <p class="text-[#969799]">Fundador, Estúdio Criativo</p>
+          </div>
+        </div>
+        <p class="text-[#969799] mb-6">
+          "O sistema desenvolvido automatizou processos que consumiam horas da nossa equipe. A produtividade aumentou e o investimento se pagou em apenas 3 meses."
+        </p>
+        <div class="flex text-[#5C45FD]">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star-half-alt"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Section -->
+<section id="faq" class="py-20 bg-[#161616]">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Perguntas Frequentes</h2>
+      <p class="text-[#969799] max-w-2xl mx-auto">
+        Respostas para as dúvidas mais comuns sobre nossos serviços
+      </p>
+    </div>
+    
+    <div class="max-w-3xl mx-auto">
+      <!-- FAQ Item 1 -->
+      <div id="faq-1" class="mb-6">
+        <button class="faq-toggle w-full flex justify-between items-center bg-[#2A2A2A] hover:bg-[#333] p-6 rounded-lg transition duration-300 focus:outline-none" aria-expanded="false">
+          <span class="text-xl font-medium text-white text-left">Quanto tempo leva para desenvolver um site?</span>
+          <i class="fa-solid fa-plus text-[#5C45FD] transition-transform duration-300"></i>
+        </button>
+        <div class="faq-content hidden bg-[#222] p-6 rounded-b-lg mt-1">
+          <p class="text-[#969799]">
+            O prazo varia de acordo com a complexidade do projeto. Um site institucional simples pode levar de 2 a 4 semanas, enquanto projetos mais complexos como e-commerces ou sistemas web podem levar de 6 a 12 semanas. Durante a fase de briefing, fornecemos um cronograma detalhado.
+          </p>
+        </div>
+      </div>
+      
+      <!-- FAQ Item 2 -->
+      <div id="faq-2" class="mb-6">
+        <button class="faq-toggle w-full flex justify-between items-center bg-[#2A2A2A] hover:bg-[#333] p-6 rounded-lg transition duration-300 focus:outline-none" aria-expanded="false">
+          <span class="text-xl font-medium text-white text-left">Qual o investimento necessário para um projeto web?</span>
+          <i class="fa-solid fa-plus text-[#5C45FD] transition-transform duration-300"></i>
+        </button>
+        <div class="faq-content hidden bg-[#222] p-6 rounded-b-lg mt-1">
+          <p class="text-[#969799]">
+            O investimento depende do escopo e complexidade do projeto. Trabalhamos com orçamentos personalizados que se adequam às necessidades e objetivos de cada cliente. Oferecemos diferentes planos e condições de pagamento para facilitar o investimento.
+          </p>
+        </div>
+      </div>
+      
+      <!-- FAQ Item 3 -->
+      <div id="faq-3" class="mb-6">
+        <button class="faq-toggle w-full flex justify-between items-center bg-[#2A2A2A] hover:bg-[#333] p-6 rounded-lg transition duration-300 focus:outline-none" aria-expanded="false">
+          <span class="text-xl font-medium text-white text-left">Vocês oferecem suporte após a entrega do site?</span>
+          <i class="fa-solid fa-plus text-[#5C45FD] transition-transform duration-300"></i>
+        </button>
+        <div class="faq-content hidden bg-[#222] p-6 rounded-b-lg mt-1">
+          <p class="text-[#969799]">
+            Sim, oferecemos planos de suporte e manutenção contínuos após a entrega do projeto. Isso inclui atualizações de segurança, correções de bugs, pequenas melhorias e monitoramento de performance. Também disponibilizamos treinamento para que sua equipe possa gerenciar o conteúdo.
+          </p>
+        </div>
+      </div>
+      
+      <!-- FAQ Item 4 -->
+      <div id="faq-4" class="mb-6">
+        <button class="faq-toggle w-full flex justify-between items-center bg-[#2A2A2A] hover:bg-[#333] p-6 rounded-lg transition duration-300 focus:outline-none" aria-expanded="false">
+          <span class="text-xl font-medium text-white text-left">Como funciona o processo de desenvolvimento?</span>
+          <i class="fa-solid fa-plus text-[#5C45FD] transition-transform duration-300"></i>
+        </button>
+        <div class="faq-content hidden bg-[#222] p-6 rounded-b-lg mt-1">
+          <p class="text-[#969799]">
+            Nosso processo inclui: 1) Briefing e levantamento de requisitos; 2) Planejamento e proposta; 3) Design e aprovação; 4) Desenvolvimento; 5) Testes e ajustes; 6) Lançamento; 7) Suporte pós-lançamento. Mantemos comunicação constante durante todo o processo.
+          </p>
+        </div>
+      </div>
+      
+      <!-- FAQ Item 5 -->
+      <div id="faq-5">
+        <button class="faq-toggle w-full flex justify-between items-center bg-[#2A2A2A] hover:bg-[#333] p-6 rounded-lg transition duration-300 focus:outline-none" aria-expanded="false">
+          <span class="text-xl font-medium text-white text-left">O site será otimizado para SEO?</span>
+          <i class="fa-solid fa-plus text-[#5C45FD] transition-transform duration-300"></i>
+        </button>
+        <div class="faq-content hidden bg-[#222] p-6 rounded-b-lg mt-1">
+          <p class="text-[#969799]">
+            Sim, todos os nossos projetos são desenvolvidos com boas práticas de SEO desde o início. Isso inclui estrutura técnica otimizada, velocidade de carregamento, responsividade, URLs amigáveis, metadados e estrutura de conteúdo adequada. Também oferecemos serviços específicos de otimização avançada de SEO.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section id="cta" class="py-20 bg-gradient-to-b from-[#161616] to-[#1a1a24]">
+  <div class="container mx-auto px-4">
+    <div class="bg-gradient-to-r from-[#5C45FD]/20 to-[#8C84FF]/20 rounded-lg p-8 md:p-16 text-center relative overflow-hidden">
+      <div class="absolute top-0 left-0 w-full h-full bg-[#161616] opacity-50"></div>
+      <div class="absolute top-0 right-0 w-64 h-64 bg-[#5C45FD] rounded-full filter blur-3xl opacity-20"></div>
+      <div class="absolute bottom-0 left-0 w-64 h-64 bg-[#8C84FF] rounded-full filter blur-3xl opacity-20"></div>
+      
+      <div class="relative z-10">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+          Cada dia sem um site é um cliente perdido.<br>Vamos resolver isso agora?
+        </h2>
+        <p class="text-[#969799] text-lg max-w-2xl mx-auto mb-8">
+          Não perca mais oportunidades. Entre em contato hoje mesmo e comece a transformar sua presença digital.
+        </p>
+        <span class="inline-block px-10 py-4 bg-[#5C45FD] hover:bg-[#4935e0] text-white rounded-md transition duration-300 transform hover:scale-105 shadow-lg shadow-[#5C45FD]/20 text-lg cursor-pointer">
+          Começar agora
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="py-20 bg-[#1a1a24]">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Entre em Contato</h2>
+      <p class="text-[#969799] max-w-2xl mx-auto">
+        Estamos prontos para transformar sua presença digital. Preencha o formulário abaixo e receba um orçamento gratuito.
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+      <div>
+        <form id="contact-form" class="space-y-6">
+          <div>
+            <label for="name" class="block text-[#969799] mb-2">Nome completo</label>
+            <input type="text" id="name" name="name" class="w-full bg-[#2A2A2A] border border-[#444] rounded-md px-4 py-3 text-white focus:outline-none focus:border-[#5C45FD] transition duration-300" required="">
+          </div>
+          
+          <div>
+            <label for="email" class="block text-[#969799] mb-2">E-mail</label>
+            <input type="email" id="email" name="email" class="w-full bg-[#2A2A2A] border border-[#444] rounded-md px-4 py-3 text-white focus:outline-none focus:border-[#5C45FD] transition duration-300" required="">
+          </div>
+          
+          <div>
+            <label for="phone" class="block text-[#969799] mb-2">Telefone</label>
+            <input type="tel" id="phone" name="phone" class="w-full bg-[#2A2A2A] border border-[#444] rounded-md px-4 py-3 text-white focus:outline-none focus:border-[#5C45FD] transition duration-300" required="">
+          </div>
+          
+          <div>
+            <label for="service" class="block text-[#969799] mb-2">Serviço de interesse</label>
+            <select id="service" name="service" class="w-full bg-[#2A2A2A] border border-[#444] rounded-md px-4 py-3 text-white focus:outline-none focus:border-[#5C45FD] transition duration-300" required="">
+              <option value="">Selecione um serviço</option>
+              <option value="site">Site Institucional</option>
+              <option value="landing">Landing Page</option>
+              <option value="sistema">Sistema Web</option>
+              <option value="correcao">Correção de Site</option>
+              <option value="design">Design e Identidade Visual</option>
+              <option value="seo">Análise e Melhoria de SEO</option>
+            </select>
+          </div>
+          
+          <div>
+            <label for="message" class="block text-[#969799] mb-2">Mensagem</label>
+            <textarea id="message" name="message" rows="5" class="w-full bg-[#2A2A2A] border border-[#444] rounded-md px-4 py-3 text-white focus:outline-none focus:border-[#5C45FD] transition duration-300" required=""></textarea>
+          </div>
+          
+          <button type="submit" class="w-full bg-[#5C45FD] hover:bg-[#4935e0] text-white rounded-md px-8 py-4 transition duration-300 transform hover:scale-105 shadow-lg shadow-[#5C45FD]/20">
+            Enviar mensagem
+          </button>
+        </form>
+      </div>
+      
+      <div class="space-y-8">
+        <div class="bg-[#2A2A2A] rounded-lg p-8">
+          <h3 class="text-2xl font-bold text-white mb-6">Informações de Contato</h3>
+          
+          <div class="space-y-6">
+            <div class="flex items-start space-x-4">
+              <div class="text-[#5C45FD] mt-1">
+                <i class="fa-solid fa-location-dot text-xl"></i>
+              </div>
+              <div>
+                <h4 class="text-white font-medium mb-1">Endereço</h4>
+                <p class="text-[#969799]">Av. Paulista, 1000 - Bela Vista<br>São Paulo - SP, 01310-100</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-4">
+              <div class="text-[#5C45FD] mt-1">
+                <i class="fa-solid fa-envelope text-xl"></i>
+              </div>
+              <div>
+                <h4 class="text-white font-medium mb-1">E-mail</h4>
+                <p class="text-[#969799]">contato@webagency.com.br</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-4">
+              <div class="text-[#5C45FD] mt-1">
+                <i class="fa-solid fa-phone text-xl"></i>
+              </div>
+              <div>
+                <h4 class="text-white font-medium mb-1">Telefone</h4>
+                <p class="text-[#969799]">(11) 99999-9999</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-[#2A2A2A] rounded-lg p-8">
+          <h3 class="text-2xl font-bold text-white mb-6">Horário de Atendimento</h3>
+          <div class="space-y-4">
+            <div class="flex justify-between">
+              <span class="text-[#969799]">Segunda a Sexta</span>
+              <span class="text-white">09:00 - 18:00</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-[#969799]">Sábado</span>
+              <span class="text-white">09:00 - 13:00</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-[#969799]">Domingo</span>
+              <span class="text-white">Fechado</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-[#2A2A2A] rounded-lg p-8">
+          <h3 class="text-2xl font-bold text-white mb-6">Redes Sociais</h3>
+          <div class="flex space-x-6">
+            <span class="text-[#969799] hover:text-[#5C45FD] transition duration-300 cursor-pointer">
+              <i class="fa-brands fa-instagram text-2xl"></i>
+            </span>
+            <span class="text-[#969799] hover:text-[#5C45FD] transition duration-300 cursor-pointer">
+              <i class="fa-brands fa-linkedin text-2xl"></i>
+            </span>
+            <span class="text-[#969799] hover:text-[#5C45FD] transition duration-300 cursor-pointer">
+              <i class="fa-brands fa-facebook text-2xl"></i>
+            </span>
+            <span class="text-[#969799] hover:text-[#5C45FD] transition duration-300 cursor-pointer">
+              <i class="fa-brands fa-youtube text-2xl"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer" class="bg-[#161616] text-white py-16">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div>
+        <div class="text-3xl font-bold bg-gradient-to-r from-[#5C45FD] to-[#8C84FF] text-transparent bg-clip-text mb-6">
+          WEBAGENCY
+        </div>
+        <p class="text-[#969799] mb-6">
+          Transformando ideias em experiências digitais impactantes desde 2010.
+        </p>
+        <div class="flex space-x-4">
+          <span class="text-[#969799] hover:text-[#5C45FD] transition duration-300 cursor-pointer">
+            <i class="fa-brands fa-instagram text-xl"></i>
+          </span>
+          <span class="text-[#969799] hover:text-[#5C45FD] transition duration-300 cursor-pointer">
+            <i class="fa-brands fa-linkedin text-xl"></i>
+          </span>
+          <span class="text-[#969799] hover:text-[#5C45FD] transition duration-300 cursor-pointer">
+            <i class="fa-brands fa-facebook text-xl"></i>
+          </span>
+          <span class="text-[#969799] hover:text-[#5C45FD] transition duration-300 cursor-pointer">
+            <i class="fa-brands fa-youtube text-xl"></i>
+          </span>
+        </div>
+      </div>
+      
+      <div>
+        <h4 class="text-xl font-bold mb-6">Serviços</h4>
+        <ul class="space-y-4">
+          <li>
+            <span class="text-[#969799] hover:text-[#5C45FD] transition duration-300 cursor-pointer">Sites Institucionais</span>
+          </li>
+          <li>
+            <span class="text-[#969799] hover:text-[#5C45FD] transition duration-300 cursor-pointer">Landing Pages</span>
+          </li>
+          <li>
+            <span class="text-[#969799] hover:text-[#5C45FD] transition duration-300 cursor-pointer">Sistemas Web</span>
+          </li>
+          <li>
+            <span class="text-[#969799] hover:text-[#5C45FD] transition duration-300 cursor-pointer">Correção de Sites</span>
+          </li>
+          <li>
+            <span class="text-[#969799] hover:text-[#5C45FD] transition duration-300 cursor-pointer">Design e Identidade Visual</span>
+          </li>
+          <li>
+            <span class="text-[#969799] hover:text-[#5C45FD] transition duration-300 cursor-pointer">Análise e Melhoria de SEO</span>
+          </li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4 class="text-xl font-bold mb-6">Links Úteis</h4>
+        <ul class="space-y-4">
+          <li>
+            <span class="text-[#969799] hover:text-[#5C45FD] transition duration-300 cursor-pointer">Sobre Nós</span>
+          </li>
+          <li>
+            <span class="text-[#969799] hover:text-[#5C45FD] transition duration-300 cursor-pointer">Portfólio</span>
+          </li>
+          <li>
+            <span class="text-[#969799] hover:text-[#5C45FD] transition duration-300 cursor-pointer">Depoimentos</span>
+          </li>
+          <li>
+            <span class="text-[#969799] hover:text-[#5C45FD] transition duration-300 cursor-pointer">FAQ</span>
+          </li>
+          <li>
+            <span class="text-[#969799] hover:text-[#5C45FD] transition duration-300 cursor-pointer">Blog</span>
+          </li>
+          <li>
+            <span class="text-[#969799] hover:text-[#5C45FD] transition duration-300 cursor-pointer">Contato</span>
+          </li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4 class="text-xl font-bold mb-6">Newsletter</h4>
+        <p class="text-[#969799] mb-6">
+          Receba novidades e dicas sobre desenvolvimento web e marketing digital.
+        </p>
+        <form class="space-y-4">
+          <input type="email" placeholder="Seu e-mail" class="w-full bg-[#2A2A2A] border border-[#444] rounded-md px-4 py-3 text-white focus:outline-none focus:border-[#5C45FD] transition duration-300">
+          <button type="submit" class="w-full bg-[#5C45FD] hover:bg-[#4935e0] text-white rounded-md px-6 py-3 transition duration-300">
+            Inscrever-se
+          </button>
+        </form>
+      </div>
+    </div>
+    
+    <div class="border-t border-[#2A2A2A] mt-12 pt-8">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <p class="text-[#969799] text-sm mb-4 md:mb-0">
+          © 2025 WebAgency. Todos os direitos reservados.
+        </p>
+        <div class="flex space-x-6">
+          <span class="text-[#969799] hover:text-[#5C45FD] text-sm transition duration-300 cursor-pointer">
+            Política de Privacidade
+          </span>
+          <span class="text-[#969799] hover:text-[#5C45FD] text-sm transition duration-300 cursor-pointer">
+            Termos de Uso
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp Button -->
+<span class="fixed bottom-8 right-8 bg-[#25D366] text-white rounded-full p-4 shadow-lg hover:bg-[#1EA952] transition duration-300 z-50 cursor-pointer" id="whatsapp-button">
+  <i class="fa-brands fa-whatsapp text-2xl"></i>
+</span>
+
+<script>
+// Mobile Menu Toggle
+document.getElementById('mobile-menu-button').addEventListener('click', function() {
+  document.getElementById('mobile-menu').classList.toggle('hidden');
+});
+
+// FAQ Toggles
+document.querySelectorAll('.faq-toggle').forEach(button => {
+  button.addEventListener('click', () => {
+    const content = button.nextElementSibling;
+    const icon = button.querySelector('i');
+    
+    content.classList.toggle('hidden');
+    icon.classList.toggle('rotate-45');
+    button.setAttribute('aria-expanded', content.classList.contains('hidden') ? 'false' : 'true');
+  });
+});
+
+// Counter Animation
+const counters = document.querySelectorAll('.counter');
+const speed = 200;
+
+const animateCounter = () => {
+  counters.forEach(counter => {
+    const target = +counter.getAttribute('data-target');
+    let count = 0;
+    
+    const updateCount = () => {
+      const increment = target / speed;
+      
+      if (count < target) {
+        count += increment;
+        counter.textContent = Math.round(count);
+        setTimeout(updateCount, 10);
+      } else {
+        counter.textContent = target;
+      }
+    };
+    
+    updateCount();
+  });
+};
+
+// WhatsApp Button
+document.getElementById('whatsapp-button').addEventListener('click', function() {
+  window.open('https://wa.me/5561999999999', '_blank');
+});
+
+// Initialize counter animation
+animateCounter();
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+           
